@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\RecetaController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +22,8 @@ Route::get('/bienvenido', function(){
 
     return view('bienvenido');
 });
+
+Auth::routes();
+
+Route::get('/recetas', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
