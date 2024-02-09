@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Receta;
 use Illuminate\Http\Request;
 
 class RecetaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
+        return view('recetas.index');
     }
 
     /**
@@ -19,7 +29,7 @@ class RecetaController extends Controller
      */
     public function create()
     {
-        //
+        return view('recetas.create');
     }
 
     /**
@@ -33,7 +43,7 @@ class RecetaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Receta $receta)
     {
         //
     }
@@ -41,7 +51,7 @@ class RecetaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Receta $receta)
     {
         //
     }
@@ -49,7 +59,7 @@ class RecetaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Receta $receta)
     {
         //
     }
@@ -57,7 +67,7 @@ class RecetaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Receta $receta)
     {
         //
     }

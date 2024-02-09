@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecetaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -18,12 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bienvenido', function(){
-
-    return view('bienvenido');
-});
-
 Auth::routes();
 
-Route::get('/recetas', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/recetas', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::apiResource('/recetas', HomeController::class);
+
+Route::get('/recetas',[RecetaController::class, 'index'])->name('recetas.index');
+Route::get('/recetas/create', [RecetaController::class, 'create'])->name('recetas.create');
