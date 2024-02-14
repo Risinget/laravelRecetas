@@ -3,9 +3,13 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css'; // Importa los estilos de SweetAlert2
 
 import './bootstrap';
 import { createApp } from 'vue';
+import FechaReceta from './components/FechaReceta.vue'
+import EliminarReceta from './components/EliminarReceta.vue'
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -15,8 +19,8 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+// import ExampleComponent from './components/ExampleComponent.vue';
+// app.component('example-component', ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,4 +40,14 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
+// Vue.config.ignoredElements = ['trix-editor'] # PARA IGNORAR ELEMENTOS QUE NO SON DE VUE O PARA VUE
+app.component('fecha-receta', FechaReceta);
+app.component('eliminar-receta', EliminarReceta);
+// Usa el plugin VueSweetalert2 con la aplicación Vue
+app.use(VueSweetalert2);
+
+// Revisar que funciones globales se añadieron de $
+// console.log(app.config.globalProperties);
+
 app.mount('#app');
+
