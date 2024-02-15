@@ -4,7 +4,12 @@ body{
 }
 
 trix-editor{
-    height: 200px;
+    height: 400px;
+    height: auto!important;
+}
+.icono{
+
+    width: 20px;
 }
 
 .bg-primary .navbar-brand{

@@ -54,13 +54,13 @@ class User extends Authenticatable
             $user->perfil()->create();
         });
     }
-
+    // Relacion 1:n 
     public function recetas(){
         return $this->hasMany(Receta::class);
         // return $this->hasMany(Receta::class, 'user_id', 'id');
     }
 
-
+    // Relacion 1:1
     public function perfil(){
         return $this->hasOne(Perfil::class);
     }

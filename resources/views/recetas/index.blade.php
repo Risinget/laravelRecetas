@@ -2,9 +2,9 @@
 
 
 @section('botones')
-    
 
-    <a href="{{ route('recetas.create') }}" class="btn btn-primary mr-2 text-white">Crear Receta</a>
+    @include('ui.navegacion')
+    {{-- <a href="{{ route('perfiles.edit',['perfil'=>$usuario->id]) }}" class="btn btn-success mr-2 m-2 text-white">Editar perfil</a> --}}
 
 @endsection
 
@@ -59,10 +59,14 @@
              @endforeach
             
         </tbody>
+
     </table>
+
+    <div class="col-12 mt-4 justify-content d-flex">
+                            {{ $recetas->links() }}
+
+    </div>
 </div>
-
-
 
  
 </div>

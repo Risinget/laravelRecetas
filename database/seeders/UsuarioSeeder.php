@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -15,24 +16,23 @@ class UsuarioSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
+
+        $user = User::create([
             'name' => 'eduar',
             'email' => 'eduar@gmail.com',
             'password' => Hash::make('eduar'),
             'url' => 'http://127.0.0.1:8000',
-            'created_at' => date('Y-m-h H:i:s'),
-            'updated_at' => date('Y-m-h H:i:s'),
 
         ]);
+        // $user->perfil()->create();
 
-        DB::table('users')->insert([
+        $user2 = User::create([
             'name' => 'pablo',
             'email' => 'pablo@gmail.com',
             'password' => Hash::make('pablo'),
             'url' => 'http://127.0.0.1:8000',
-            'created_at' => date('Y-m-h H:i:s'),
-            'updated_at' => date('Y-m-h H:i:s'),
 
         ]);
+        // $user2->perfil()->create();
     }
 }

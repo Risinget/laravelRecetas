@@ -10,7 +10,7 @@ import './bootstrap';
 import { createApp } from 'vue';
 import FechaReceta from './components/FechaReceta.vue'
 import EliminarReceta from './components/EliminarReceta.vue'
-
+import LikeButton from './components/LikeButton.vue'
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -43,8 +43,10 @@ const app = createApp({});
 // Vue.config.ignoredElements = ['trix-editor'] # PARA IGNORAR ELEMENTOS QUE NO SON DE VUE O PARA VUE
 app.component('fecha-receta', FechaReceta);
 app.component('eliminar-receta', EliminarReceta);
+app.component('like-button', LikeButton);
 // Usa el plugin VueSweetalert2 con la aplicación Vue
 app.use(VueSweetalert2);
+
 
 // Revisar que funciones globales se añadieron de $
 // console.log(app.config.globalProperties);

@@ -13,28 +13,31 @@ class RecetasSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('recetas')->insert([
-            'titulo' => 'Prueba',
-            'ingredientes' => 'ingredientes',
-            'preparacion' => 'preparacion',
-            'imagen' => 'http://127.0.0.1:8000',
-            'user_id' =>1,
-            'categoria_id' => 1,
-            'created_at' => date('Y-m-h H:i:s'),
-            'updated_at' => date('Y-m-h H:i:s'),
+        for ($i = 0; $i < 15; $i++) {
+            DB::table('recetas')->insert([
+                'titulo' => 'Receta de Eduar ' . ($i + 1),
+                'ingredientes' => 'ingredientes',
+                'preparacion' => 'preparacion',
+                'imagen' => 'upload-recetas/imagen.jpg',
+                'user_id' => 1,
+                'categoria_id' => 1, // Aquí puedes cambiar la categoría si es necesario
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
 
-        ]);
+            DB::table('recetas')->insert([
+                'titulo' => 'Receta de Pablo ' . ($i + 1),
+                'ingredientes' => 'ingredientes',
+                'preparacion' => 'preparacion',
+                'imagen' => 'upload-recetas/imagen.jpg',
+                'user_id' => 2,
+                'categoria_id' => 1, // Aquí puedes cambiar la categoría si es necesario
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
 
-        DB::table('recetas')->insert([
-            'titulo' => 'Prueba',
-            'ingredientes' => 'ingredientes',
-            'preparacion' => 'preparacion',
-            'imagen' => 'http://127.0.0.1:8000',
-            'user_id' => 2,
-            'categoria_id' => 2,
-            'created_at' => date('Y-m-h H:i:s'),
-            'updated_at' => date('Y-m-h H:i:s'),
 
-        ]);
+        
     }
 }

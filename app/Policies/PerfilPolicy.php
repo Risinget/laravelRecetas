@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Receta;
+use App\Models\Perfil;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class RecetaPolicy
+class PerfilPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,9 +19,9 @@ class RecetaPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Receta $receta): bool
+    public function view(User $user, Perfil $perfil): bool
     {
-        return $user->id === $receta->user_id;
+        return $user->id === $perfil->user_id;
 
     }
 
@@ -36,25 +36,25 @@ class RecetaPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Receta $receta): bool
+    public function update(User $user, Perfil $perfil): bool
     {
-        // Validar si el usuario es el mismo id que de la receta quien lo edita
-        return $user->id === $receta->user_id;
+        // Revisa si el usuario autenticado es el que desea modificar el perfil
+        return $user->id === $perfil->user_id;
+
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Receta $receta): bool
+    public function delete(User $user, Perfil $perfil): bool
     {
-        // Validar si el usuario es el mismo id que de la receta quien lo edita
-        return $user->id === $receta->user_id;
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Receta $receta): bool
+    public function restore(User $user, Perfil $perfil): bool
     {
         //
     }
@@ -62,7 +62,7 @@ class RecetaPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Receta $receta): bool
+    public function forceDelete(User $user, Perfil $perfil): bool
     {
         //
     }
