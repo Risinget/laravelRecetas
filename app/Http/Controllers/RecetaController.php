@@ -18,7 +18,7 @@ class RecetaController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'show']);
+        $this->middleware('auth', ['except' => 'show', 'show']);
     }
 
 
@@ -30,14 +30,14 @@ class RecetaController extends Controller
     {
 
 
-        $usuario = auth()->user()->id;
-        $recetas = Receta::where('user_id', $usuario)->paginate(4);
+        $usuario = auth()->user();
+        $recetas = Receta::where('user_id', $usuario->id)->paginate(4);
         // $usuario = auth()->user();
   
-        
-        // return view('recetas.index')->with('recetas',$recetas)->with('usuario',$usuario);
-         return view('recetas.index')->with('recetas',$recetas);
 
+        // return view('recetas.index')->with('recetas',$recetas)->with('usuario',$usuario);
+         return view('recetas.index')->with('recetas',$recetas)
+                                     ->with('usuario',$usuario);
     }
 
     /**
@@ -118,7 +118,9 @@ class RecetaController extends Controller
      */
     public function show(Receta $receta)
     {
-        return view('recetas.show')->with('receta',$receta);
+        $like = ( auth()->user()) ? auth()->user()->meGusta->contains($receta->id) : false;
+        $likes = $receta->likes->count();
+        return view('recetas.show', compact('like', 'likes'))->with('receta',$receta);
     }
 
     /**
@@ -175,5 +177,13 @@ class RecetaController extends Controller
         $receta->delete();
 
         return redirect()->action([RecetaController::class, 'index']);
+    }
+
+    public function search(Request $request){
+
+        $busqueda = $request['buscar'];
+        $recetas = Receta::where('titulo', 'like', '%' . $busqueda . '%')->paginate(1);
+        $recetas->appends(['buscar'=>$busqueda]);
+        return view('busquedas.show', compact('recetas', 'busqueda'));
     }
 }

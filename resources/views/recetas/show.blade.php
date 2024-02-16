@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <article class="contenido-receta">
+    <article class="contenido-receta bg-white p-5 mb-4 shadow">
 
         <h1 class="text-center mb-4">{{ $receta->titulo }}</h1>
 
@@ -14,16 +14,21 @@
         </div>
 
 
-        <div class="receta-meta">
+        <div class="receta-meta mt-5">
             <p>
                 <span class="font-weight-bold text-primary">Escrito en:</span>
-                {{ $receta->categoria->nombre }}
+                <a class="text-dark" href="{{ route('categorias.show', ['categoriaReceta' => $receta->categoria->id]) }}">
+    {{ $receta->categoria->nombre }}
+</a>
+
+
             </p>
 
             <p>
                 <span class="font-weight-bold text-primary">Autor:</span>
                 {{-- TODO: MOSTRAR USUARIO --}}
-                {{ $receta->autor->name }}
+                <a href="{{ route('perfiles.show',['perfil'=>$receta->autor->id]) }}">
+                {{ $receta->autor->name }}</a>
             </p>
 
             <p>
@@ -52,13 +57,22 @@
 
             </div>
 
-
-            <like-button>
-
+            <div class="justify-content-center row text-center">
+                <like-button receta-id="{{ $receta->id }}" like="{{ $like }}" likes="{{ $likes }}">
 
             </like-button>
+            </div>
+            
 
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            
+        </div>
+    </article>
+
+
+@endsection
+
+@section('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script>
             $(document).ready(function() {
                 $('.like-btn').on('click', function() {
@@ -66,8 +80,4 @@
                 });
             });
             </script>
-        </div>
-    </article>
-
-
 @endsection

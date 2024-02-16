@@ -21,4 +21,109 @@ trix-editor{
     &:hover{
         color: white;
     }
+    color: #fff !important;
+    font-size: 2.4rex;
+    text-decoration: none;
+
+}
+
+.barra {
+    background-color: #ED4646 !important;
+}
+
+.fecha{
+    color: #ED4646 !important;
+}
+
+.receta-meta p {
+    font-size: 12px;
+    font-weight: bold;
+}
+.navbar-light{
+    .navbar-nav{
+        .nav-link{
+            color: #fff;
+            font-size: 1.4rem;
+                &:focus,
+                &:hover{
+                color: #fff;
+            }
+        }
+    }
+}
+
+.titulo-categoria{
+    font-family: 'Cabin', sans-serif;
+    color: #333;
+    font-size: 1.8rem ;
+    border-bottom: 3px solid #ED4646 !important;
+    display: inline-block;
+    padding-bottom: .5rem;
+    padding-right: 2rem;
+
+}
+
+.bt-receta,
+.btn-receta:hover{
+    background-color: #ED4646 !important;
+    border: none;
+}
+
+.owl-carousel .owl-stage { display: flex;}
+
+.card {
+    display: flex;
+    flex: 1 0 auto;
+    height: 100%;
+}
+
+.card-body{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+}
+
+.categorias-bg{
+    background-color: #f9f9f9;
+}
+
+
+.nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    /* Grosor de la línea */
+    background-color: #ED4646;
+    /* Color de la línea */
+    transition: width 0.3s ease-in-out;
+    /* Transición suave de la anchura */
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    /* Al pasar el ratón sobre el enlace, la línea se expandirá a su longitud completa */
+}
+
+.hero-categorias {
+    background-image: linear-gradient(to bottom, rgba(70, 70, 70, 0.4), rgba(53, 53, 53, 0.4)), url('http://127.0.0.1:8000/images/Superfoods.jpg');
+    height: 30rem;
+    background-size: cover;
+    background-position: top center;
+}
+
+.hero-categorias .texto-buscar p {
+    font-size: 1.4rem;
+    /* Agregué 'rem' para especificar unidades */
+    color: #fff;
 }

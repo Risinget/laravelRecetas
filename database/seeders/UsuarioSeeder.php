@@ -3,10 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Perfil;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 
 class UsuarioSeeder extends Seeder
@@ -34,5 +35,8 @@ class UsuarioSeeder extends Seeder
 
         ]);
         // $user2->perfil()->create();
+        $imagenUser1 = Perfil::where('user_id', 1)->update(['imagen' => 'upload-recetas/imagen.jpg']);
+        $imagenUser2 = Perfil::where('user_id', 2)->update(['imagen' => 'upload-recetas/imagen.jpg']);
+
     }
 }

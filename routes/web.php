@@ -1,24 +1,30 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InicioController;
+use App\Http\Controllers\LikesController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RecetaController;
+use App\Http\Controllers\CategoriasController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
+| 
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [InicioController::class, 'index'])->name('inicio.index');
+
+Route::get('/categoria/{categoriaReceta}', [CategoriasController::class, 'show'])->name('categorias.show');
+Route::get('/buscar', [RecetaController::class, 'search'])->name('buscar.show');
 
 Auth::routes();
 
@@ -37,3 +43,6 @@ Route::delete('/recetas/{receta}', [RecetaController::class, 'destroy'])->name('
 Route::get('/perfiles/{perfil}', [PerfilController::class, 'show'])->name('perfiles.show');
 Route::get('/perfiles/{perfil}/edit',[PerfilController::class, 'edit'])->name('perfiles.edit');
 Route::put('/perfiles/{perfil}', [PerfilController::class, 'update'])->name('perfiles.update');
+
+// Guarda los likes de las recetas
+Route::post('/recetas/{receta}', [LikesController::class, 'update'])->name('likes.update');
