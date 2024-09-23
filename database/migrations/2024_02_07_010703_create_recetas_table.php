@@ -11,15 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('categoria_recetas', function(Blueprint $table){
-            $table->id();
-            $table->string('nombre');
-            $table->timestamps();
-
-
-        });
-
         Schema::create('recetas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
@@ -28,8 +19,6 @@ return new class extends Migration
             $table->string('imagen');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('categoria_id')->references('id')->on('categoria_recetas');
-            
-
             $table->timestamps();
         });
     }
@@ -39,9 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categoria_receta');
-
         Schema::dropIfExists('recetas');
-    
     }
 };
