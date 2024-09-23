@@ -5,8 +5,6 @@
  */
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css'; // Importa los estilos de SweetAlert2
-import 'owl.carousel';
-
 import './bootstrap';
 import { createApp } from 'vue';
 import FechaReceta from './components/FechaReceta.vue'
@@ -48,26 +46,29 @@ app.component('like-button', LikeButton);
 // Usa el plugin VueSweetalert2 con la aplicación Vue
 app.use(VueSweetalert2);
 
-
-$(function() {
-    $('.owl-carousel').owlCarousel({
-        margin: 10,
-        loop: true,
-        autoplay: true,
-        autoplayHoverPause: true,
-        responsive: {
-            0 : {
-                items:1
+// if the window route is /
+// import "owl.carousel";
+if (window.location.pathname === '/') {
+    $(function () {
+        $(".owl-carousel").owlCarousel({
+            margin: 10,
+            loop: true,
+            autoplay: true,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                600: {
+                    items: 2,
+                },
+                1000: {
+                    items: 3,
+                },
             },
-            600:{
-                items:2
-            },
-            1000:{
-                items:3
-            }
-        }
+        });
     });
-});
+} 
 
 
 // Revisar que funciones globales se añadieron de $

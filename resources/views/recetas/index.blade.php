@@ -46,7 +46,7 @@
                     </form> --}}
 
                     <eliminar-receta receta-id={{ $receta->id }}>
-                            @csrf
+                            {{-- @csrf --}}
 
 
                     </eliminar-receta>
